@@ -1,0 +1,79 @@
+<Ball>:
+    size: 20, 20
+    canvas:
+        Ellipse:
+            size: self.size
+            pos: self.pos
+
+<PaddleLR>:
+    size: 30, 100
+    canvas:
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<PaddleTB>:
+    size: 100, 30
+    canvas:
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<MainWindow>:
+    ball: pong_ball
+    player_left: player_left
+    player_top: player_top
+    player_right: player_right
+    player_bottom: player_down
+
+    # bottom
+    Label:
+        font_size: 30
+        center_x: root.width/2
+        top: root.top - 40
+        text: str(root.player_bottom.score)
+
+    # right
+    Label:
+        font_size: 30
+        center_x: root.width - 100
+        top: root.top/2 + 50
+        text: str(root.player_right.score)
+
+    # top
+    Label:
+        font_size: 30
+        center_x: root.width/2
+        top: 150
+        text: str(root.player_top.score)
+
+    # left
+    Label:
+        font_size: 30
+        center_x: 100
+        top: root.top/2 + 50
+        text: str(root.player_left.score)
+
+    Ball:
+        id: pong_ball
+        center: self.parent.center
+
+    PaddleLR:
+        id: player_left
+        x: root.x
+        center_y: root.center_y
+
+    PaddleLR:
+        id: player_right
+        x: root.width - self.width
+        center_y: root.center_y
+
+    PaddleTB:
+        id: player_top
+        center_x: root.center_x
+        y: root.y
+
+    PaddleTB:
+        id: player_down
+        center_x: root.center_x
+        y: root.height - self.height
